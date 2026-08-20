@@ -7,10 +7,6 @@
 <title>Джетису-Мобиль</title>
 
 <style>
-/* =========================
-   ОСНОВНЫЕ НАСТРОЙКИ
-========================= */
-
 * {
     box-sizing: border-box;
     margin: 0;
@@ -22,357 +18,271 @@ html {
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: #050914;
+    font-family: Arial, sans-serif;
+    background: #080b12;
     color: #ffffff;
+    min-height: 100vh;
     overflow-x: hidden;
 }
 
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
-button {
-    font-family: inherit;
-}
-
-/* =========================
-   ФОН
-========================= */
-
+/* Фоновое свечение */
 body::before {
     content: "";
     position: fixed;
     width: 500px;
     height: 500px;
-    background: #1769ff;
-    opacity: 0.08;
-    filter: blur(130px);
+    background: #1976ff;
+    opacity: 0.12;
+    filter: blur(120px);
     border-radius: 50%;
     top: -200px;
-    left: -200px;
-    pointer-events: none;
+    left: -150px;
+    z-index: -1;
 }
 
-body::after {
-    content: "";
-    position: fixed;
-    width: 450px;
-    height: 450px;
-    background: #8b5cf6;
-    opacity: 0.06;
-    filter: blur(130px);
-    border-radius: 50%;
-    right: -200px;
-    bottom: -150px;
-    pointer-events: none;
-}
+/* ===== ШАПКА ===== */
 
-/* =========================
-   БОКОВОЕ МЕНЮ
-========================= */
-
-.sidebar {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 270px;
-    height: 100vh;
-    background: rgba(9, 15, 28, 0.97);
-    border-right: 1px solid #26344d;
-    z-index: 2000;
-    padding: 25px 18px;
-    transition: transform 0.35s ease;
-}
-
-.logo {
-    text-align: center;
-    padding: 15px;
-    margin-bottom: 35px;
-}
-
-.logo-icon {
-    width: 65px;
-    height: 65px;
-    margin: auto;
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(135deg, #2878ff, #7c4dff);
-    font-size: 32px;
-    box-shadow: 0 10px 35px rgba(55, 120, 255, 0.3);
-}
-
-.logo h2 {
-    margin-top: 12px;
-    font-size: 21px;
-}
-
-.logo p {
-    color: #78869d;
-    font-size: 12px;
-    margin-top: 4px;
-}
-
-.side-menu {
-    list-style: none;
-}
-
-.side-menu li {
-    margin: 8px 0;
-}
-
-.side-menu a {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    padding: 14px 16px;
-    border-radius: 13px;
-    color: #9caac0;
-    transition: 0.25s;
-}
-
-.side-menu a:hover,
-.side-menu a.active {
-    color: white;
-    background: linear-gradient(
-        90deg,
-        rgba(47, 128, 237, 0.25),
-        rgba(124, 77, 255, 0.12)
-    );
-    transform: translateX(4px);
-}
-
-.side-icon {
-    width: 28px;
-    text-align: center;
-    font-size: 20px;
-}
-
-/* =========================
-   КНОПКА МЕНЮ
-========================= */
-
-.menu-button {
-    display: none;
-    position: fixed;
-    top: 15px;
-    left: 15px;
-    width: 50px;
-    height: 50px;
-    border: 1px solid #33415c;
-    border-radius: 13px;
-    background: #101a2d;
-    color: white;
-    font-size: 25px;
-    z-index: 3000;
-    cursor: pointer;
-}
-
-/* =========================
-   ОСНОВНОЙ КОНТЕНТ
-========================= */
-
-.content {
-    margin-left: 270px;
-    min-height: 100vh;
-}
-
-/* =========================
-   ВЕРХНЯЯ ПАНЕЛЬ
-========================= */
-
-.topbar {
-    height: 75px;
-    padding: 0 35px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: 1px solid #1e2a40;
-    background: rgba(5, 9, 20, 0.75);
-    backdrop-filter: blur(15px);
+header {
     position: sticky;
     top: 0;
     z-index: 1000;
-}
-
-.status {
+    height: 70px;
     display: flex;
     align-items: center;
-    gap: 9px;
-    color: #8795ab;
-    font-size: 14px;
+    padding: 0 20px;
+    background: rgba(8, 11, 18, 0.9);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 
-.status-dot {
-    width: 9px;
-    height: 9px;
-    background: #27d17f;
-    border-radius: 50%;
-    box-shadow: 0 0 12px #27d17f;
+.logo {
+    font-size: 21px;
+    font-weight: bold;
+    margin-left: 15px;
 }
 
-/* =========================
-   ГЛАВНЫЙ ЭКРАН
-========================= */
+.logo span {
+    color: #4da3ff;
+}
+
+/* Кнопка меню */
+
+.menu-btn {
+    width: 45px;
+    height: 45px;
+    border: none;
+    border-radius: 13px;
+    background: #151b27;
+    color: white;
+    font-size: 25px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.menu-btn:hover {
+    background: #1976ff;
+    transform: scale(1.05);
+}
+
+/* ===== БОКОВОЕ МЕНЮ ===== */
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -290px;
+    width: 270px;
+    height: 100%;
+    z-index: 2000;
+    background: #0d121c;
+    border-right: 1px solid rgba(255,255,255,0.1);
+    padding: 25px 18px;
+    transition: 0.35s ease;
+    box-shadow: 10px 0 40px rgba(0,0,0,0.5);
+}
+
+.sidebar.active {
+    left: 0;
+}
+
+.sidebar-title {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.sidebar-title span {
+    color: #4da3ff;
+}
+
+.close-btn {
+    position: absolute;
+    right: 15px;
+    top: 18px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 27px;
+    cursor: pointer;
+}
+
+.sidebar a {
+    display: block;
+    color: #dce5f2;
+    text-decoration: none;
+    padding: 15px;
+    margin: 8px 0;
+    border-radius: 12px;
+    transition: 0.25s;
+}
+
+.sidebar a:hover {
+    background: #172337;
+    color: #4da3ff;
+    transform: translateX(5px);
+}
+
+/* Затемнение */
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.65);
+    z-index: 1500;
+    display: none;
+}
+
+.overlay.active {
+    display: block;
+}
+
+/* ===== ОСНОВА ===== */
+
+main {
+    max-width: 1100px;
+    margin: auto;
+    padding: 25px 18px 50px;
+}
+
+/* ===== HERO ===== */
 
 .hero {
-    min-height: calc(100vh - 75px);
+    min-height: 520px;
     display: flex;
     align-items: center;
-    padding: 80px 8%;
-    position: relative;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 15px;
 }
 
 .hero-content {
-    max-width: 850px;
-    animation: fadeUp 1s ease;
+    max-width: 800px;
+    animation: fadeUp 0.8s ease;
 }
 
 .badge {
     display: inline-block;
-    padding: 9px 15px;
-    border: 1px solid #2e4770;
+    background: rgba(40,130,255,0.12);
+    color: #65b0ff;
+    border: 1px solid rgba(80,160,255,0.3);
+    padding: 9px 16px;
     border-radius: 30px;
-    color: #78aaff;
-    background: rgba(40, 100, 200, 0.1);
-    margin-bottom: 25px;
-    font-size: 14px;
+    margin-bottom: 20px;
 }
 
 .hero h1 {
-    font-size: clamp(45px, 7vw, 85px);
-    line-height: 1.05;
-    margin-bottom: 25px;
+    font-size: clamp(42px, 9vw, 76px);
+    line-height: 1;
+    margin-bottom: 20px;
 }
 
-.gradient {
-    background: linear-gradient(
-        90deg,
-        #4d9aff,
-        #9b72ff,
-        #d46cff
-    );
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+.hero h1 span {
+    color: #4da3ff;
 }
 
 .hero p {
-    max-width: 700px;
-    color: #99a7bc;
-    font-size: 20px;
-    line-height: 1.8;
-    margin-bottom: 35px;
+    color: #aeb9c9;
+    font-size: 18px;
+    line-height: 1.7;
+    margin-bottom: 30px;
 }
 
-.hero-buttons {
+/* ===== КНОПКИ ===== */
+
+.buttons {
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
-    gap: 15px;
+    gap: 12px;
 }
 
 .btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
-    padding: 15px 23px;
-    border-radius: 13px;
+    padding: 15px 24px;
+    border-radius: 14px;
+    text-decoration: none;
     font-weight: bold;
     transition: 0.3s;
+    cursor: pointer;
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, #2878ff, #704bff);
-    box-shadow: 0 10px 30px rgba(56, 100, 255, 0.25);
+    background: linear-gradient(135deg, #1976ff, #6255ff);
+    color: white;
+    box-shadow: 0 10px 30px rgba(30,100,255,0.25);
 }
 
 .btn-primary:hover {
     transform: translateY(-4px);
-    box-shadow: 0 15px 35px rgba(56, 100, 255, 0.4);
+    box-shadow: 0 15px 40px rgba(30,100,255,0.4);
 }
 
 .btn-secondary {
-    border: 1px solid #33435f;
-    background: #101827;
-    color: #dce5f4;
+    background: #151c29;
+    color: white;
+    border: 1px solid #293548;
 }
 
 .btn-secondary:hover {
-    background: #172338;
-    transform: translateY(-4px);
+    transform: translateY(-3px);
+    border-color: #4da3ff;
 }
 
-/* =========================
-   ДЕКОРАТИВНЫЙ КРУГ
-========================= */
+/* ===== СЕКЦИИ ===== */
 
-.hero-decoration {
-    position: absolute;
-    right: 8%;
-    width: 330px;
-    height: 330px;
-    border-radius: 50%;
-    border: 1px solid rgba(80, 140, 255, 0.25);
-    animation: floating 5s ease-in-out infinite;
-}
-
-.hero-decoration::before {
-    content: "📱";
-    position: absolute;
-    inset: 35px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 90px;
-    background: radial-gradient(
-        circle,
-        rgba(46, 116, 255, 0.25),
-        transparent 70%
-    );
-}
-
-/* =========================
-   РАЗДЕЛЫ
-========================= */
-
-.section {
-    padding: 90px 8%;
+section {
+    padding: 70px 0;
 }
 
 .section-title {
-    font-size: 40px;
+    font-size: 34px;
     margin-bottom: 12px;
 }
 
-.section-subtitle {
-    color: #8492a8;
-    margin-bottom: 45px;
+.section-text {
+    color: #9daabd;
+    line-height: 1.7;
+    margin-bottom: 30px;
 }
 
-/* =========================
-   КАРТОЧКИ
-========================= */
+/* ===== КАРТОЧКИ ===== */
 
 .cards {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    gap: 18px;
 }
 
 .card {
-    padding: 30px;
-    border-radius: 20px;
     background: linear-gradient(
         145deg,
-        #111b2d,
-        #0b1220
+        rgba(22,30,44,0.95),
+        rgba(12,17,26,0.95)
     );
-    border: 1px solid #253550;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px;
+    padding: 25px;
     transition: 0.35s;
     position: relative;
     overflow: hidden;
@@ -383,34 +293,22 @@ body::after {
     position: absolute;
     width: 100px;
     height: 100px;
-    background: #367dff;
-    filter: blur(70px);
-    opacity: 0;
+    background: #1976ff;
+    opacity: 0.08;
+    filter: blur(40px);
     right: -30px;
     top: -30px;
-    transition: 0.4s;
 }
 
 .card:hover {
     transform: translateY(-8px);
-    border-color: #397fff;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.35);
-}
-
-.card:hover::before {
-    opacity: 0.3;
+    border-color: rgba(70,160,255,0.4);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
 }
 
 .card-icon {
-    width: 58px;
-    height: 58px;
-    border-radius: 16px;
-    background: #172641;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 27px;
-    margin-bottom: 22px;
+    font-size: 35px;
+    margin-bottom: 15px;
 }
 
 .card h3 {
@@ -419,62 +317,37 @@ body::after {
 }
 
 .card p {
-    color: #8796ad;
-    line-height: 1.7;
+    color: #9daabd;
+    line-height: 1.6;
 }
 
-/* =========================
-   О ПРОЕКТЕ
-========================= */
+/* ===== APK ===== */
 
-.about-box {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 25px;
+.download-box {
+    text-align: center;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(25,118,255,0.15),
+            rgba(98,85,255,0.08)
+        );
+    border: 1px solid rgba(77,163,255,0.25);
+    border-radius: 25px;
+    padding: 45px 20px;
 }
 
-.info-box {
-    background: #0e1727;
-    border: 1px solid #263750;
-    border-radius: 20px;
-    padding: 35px;
-}
-
-.info-box h3 {
-    margin-bottom: 15px;
-    font-size: 24px;
-}
-
-.info-box p {
-    color: #8f9db3;
-}
-
-.stats {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-}
-
-.stat {
-    padding: 25px;
-    border-radius: 17px;
-    background: #111c2e;
-    border: 1px solid #253650;
-}
-
-.stat strong {
-    display: block;
+.download-box h2 {
     font-size: 32px;
-    color: #62a0ff;
+    margin-bottom: 12px;
 }
 
-.stat span {
-    color: #8290a6;
+.download-box p {
+    color: #aeb9c9;
+    margin-bottom: 25px;
+    line-height: 1.6;
 }
 
-/* =========================
-   НОВОСТИ
-========================= */
+/* ===== НОВОСТИ ===== */
 
 .news {
     display: grid;
@@ -482,78 +355,43 @@ body::after {
 }
 
 .news-item {
-    display: flex;
-    gap: 18px;
-    align-items: flex-start;
-    padding: 25px;
-    background: #0f1828;
-    border: 1px solid #263650;
-    border-radius: 17px;
+    background: #111722;
+    border: 1px solid rgba(255,255,255,0.07);
+    padding: 20px;
+    border-radius: 16px;
     transition: 0.3s;
 }
 
 .news-item:hover {
-    transform: translateX(7px);
-    border-color: #397fff;
+    transform: translateX(5px);
+    border-color: #2d7cff;
 }
 
-.news-icon {
-    font-size: 28px;
+.news-date {
+    color: #4da3ff;
+    font-size: 13px;
+    margin-bottom: 8px;
 }
 
-.news-item h3 {
-    margin-bottom: 5px;
-}
-
-.news-item p {
-    color: #8998ae;
-}
-
-/* =========================
-   КОНТАКТЫ
-========================= */
-
-.contact {
-    text-align: center;
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(54, 117, 255, 0.15),
-            transparent 60%
-        );
-}
-
-.contact p {
-    color: #8c9bb0;
-    margin: 15px auto 30px;
-    max-width: 600px;
-}
-
-/* =========================
-   FOOTER
-========================= */
+/* ===== FOOTER ===== */
 
 footer {
-    margin-left: 270px;
-    padding: 35px 20px;
+    border-top: 1px solid rgba(255,255,255,0.08);
     text-align: center;
-    color: #69778c;
-    border-top: 1px solid #1d293c;
-    background: #040710;
+    padding: 35px 15px;
+    color: #8290a5;
 }
 
 footer strong {
-    color: #ffffff;
+    color: white;
 }
 
-/* =========================
-   АНИМАЦИИ
-========================= */
+/* ===== АНИМАЦИИ ===== */
 
 @keyframes fadeUp {
     from {
         opacity: 0;
-        transform: translateY(35px);
+        transform: translateY(30px);
     }
 
     to {
@@ -562,65 +400,30 @@ footer strong {
     }
 }
 
-@keyframes floating {
-    0%, 100% {
-        transform: translateY(0);
+@keyframes pulse {
+    0%,100% {
+        transform: scale(1);
     }
 
     50% {
-        transform: translateY(-20px);
+        transform: scale(1.04);
     }
 }
 
-/* =========================
-   ТЕЛЕФОН
-========================= */
+.pulse {
+    animation: pulse 3s infinite;
+}
 
-@media (max-width: 950px) {
+/* ===== ТЕЛЕФОН ===== */
 
-    .hero-decoration {
-        opacity: 0.35;
-        right: -80px;
-    }
+@media (max-width: 800px) {
 
     .cards {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .about-box {
         grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 700px) {
-
-    .sidebar {
-        transform: translateX(-100%);
-    }
-
-    .sidebar.open {
-        transform: translateX(0);
-    }
-
-    .menu-button {
-        display: block;
-    }
-
-    .content {
-        margin-left: 0;
-    }
-
-    footer {
-        margin-left: 0;
-    }
-
-    .topbar {
-        padding-left: 80px;
     }
 
     .hero {
-        padding: 70px 20px;
-        min-height: calc(100vh - 75px);
+        min-height: 470px;
     }
 
     .hero h1 {
@@ -628,598 +431,401 @@ footer strong {
     }
 
     .hero p {
-        font-size: 17px;
+        font-size: 16px;
     }
 
-    .hero-decoration {
-        display: none;
-    }
-
-    .section {
-        padding: 65px 20px;
+    section {
+        padding: 50px 0;
     }
 
     .section-title {
-        font-size: 31px;
+        font-size: 29px;
     }
 
-    .cards {
-        grid-template-columns: 1fr;
-    }
-
-    .stats {
-        grid-template-columns: 1fr 1fr;
+    .download-box h2 {
+        font-size: 27px;
     }
 }
 
-/* Затемнение экрана при открытом меню */
+@media (max-width: 500px) {
 
-.overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.65);
-    z-index: 1500;
-}
+    header {
+        height: 62px;
+    }
 
-.overlay.show {
-    display: block;
+    .logo {
+        font-size: 18px;
+    }
+
+    .hero {
+        padding-top: 30px;
+    }
+
+    .hero h1 {
+        font-size: 42px;
+    }
+
+    .buttons {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .card {
+        padding: 22px;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<!-- =========================
-     БОКОВОЕ МЕНЮ
-========================= -->
+<!-- БОКОВОЕ МЕНЮ -->
 
-<aside class="sidebar" id="sidebar">
+<div class="sidebar" id="sidebar">
 
-    <div class="logo">
+    <button class="close-btn" onclick="closeMenu()">×</button>
 
-        <div class="logo-icon">
-            📱
-        </div>
-
-        <h2>Джетису-Мобиль</h2>
-
-        <p>Официальный проект</p>
-
+    <div class="sidebar-title">
+        🚗 <span>Джетису</span>-Мобиль
     </div>
 
-    <ul class="side-menu">
-
-        <li>
-            <a href="#home" class="active">
-                <span class="side-icon">🏠</span>
-                Главная
-            </a>
-        </li>
-
-        <li>
-            <a href="#about">
-                <span class="side-icon">ℹ️</span>
-                О проекте
-            </a>
-        </li>
-
-        <li>
-            <a href="#features">
-                <span class="side-icon">⚡</span>
-                Возможности
-            </a>
-        </li>
-
-        <li>
-            <a href="#news">
-                <span class="side-icon">📰</span>
-                Новости
-            </a>
-        </li>
-
-        <li>
-            <a href="#contacts">
-                <span class="side-icon">💬</span>
-                Контакты
-            </a>
-        </li>
-
-    </ul>
-
-</aside>
-
-<!-- Кнопка ☰ -->
-
-<button class="menu-button" id="menuButton">
-    ☰
-</button>
-
-<!-- Затемнение -->
-
-<div class="overlay" id="overlay"></div>
-
-
-<!-- =========================
-     ОСНОВНОЙ САЙТ
-========================= -->
-
-<div class="content">
-
-    <!-- Верхняя панель -->
-
-    <header class="topbar">
-
-        <div>
-            <strong>Джетису-Мобиль</strong>
-        </div>
-
-        <div class="status">
-
-            <span class="status-dot"></span>
-
-            Проект онлайн
-
-        </div>
-
-    </header>
-
-
-    <main>
-
-        <!-- =========================
-             ГЛАВНАЯ
-        ========================= -->
-
-        <section class="hero" id="home">
-
-            <div class="hero-content">
-
-                <div class="badge">
-                    🚀 Добро пожаловать
-                </div>
-
-                <h1>
-                    Джетису-<br>
-                    <span class="gradient">Мобиль</span>
-                </h1>
-
-                <p>
-                    Современный цифровой проект
-                    с красивым интерфейсом,
-                    удобной навигацией и адаптацией
-                    под мобильные устройства.
-                </p>
-
-                <div class="hero-buttons">
-
-                    <a href="#features"
-                       class="btn btn-primary">
-                        ⚡ Возможности
-                    </a>
-
-                    <a href="#about"
-                       class="btn btn-secondary">
-                        ℹ️ О проекте
-                    </a>
-
-                </div>
-
-            </div>
-
-            <div class="hero-decoration"></div>
-
-        </section>
-
-
-        <!-- =========================
-             О ПРОЕКТЕ
-        ========================= -->
-
-        <section class="section" id="about">
-
-            <h2 class="section-title">
-                О проекте
-            </h2>
-
-            <p class="section-subtitle">
-                Всё необходимое собрано в одном месте
-            </p>
-
-            <div class="about-box">
-
-                <div class="info-box">
-
-                    <h3>
-                        🌐 Джетису-Мобиль
-                    </h3>
-
-                    <p>
-                        Это современный веб-сайт,
-                        созданный для удобного просмотра
-                        информации с телефона, планшета
-                        или компьютера.
-                    </p>
-
-                    <br>
-
-                    <p>
-                        Проект развивается и постепенно
-                        получает новые функции.
-                    </p>
-
-                </div>
-
-
-                <div class="stats">
-
-                    <div class="stat">
-                        <strong>24/7</strong>
-                        <span>Доступ к сайту</span>
-                    </div>
-
-                    <div class="stat">
-                        <strong>100%</strong>
-                        <span>Адаптация</span>
-                    </div>
-
-                    <div class="stat">
-                        <strong>⚡</strong>
-                        <span>Быстрый интерфейс</span>
-                    </div>
-
-                    <div class="stat">
-                        <strong>∞</strong>
-                        <span>Развитие проекта</span>
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             ВОЗМОЖНОСТИ
-        ========================= -->
-
-        <section class="section" id="features">
-
-            <h2 class="section-title">
-                Возможности
-            </h2>
-
-            <p class="section-subtitle">
-                Что доступно пользователям
-            </p>
-
-            <div class="cards">
-
-                <div class="card">
-
-                    <div class="card-icon">
-                        📱
-                    </div>
-
-                    <h3>
-                        Мобильная версия
-                    </h3>
-
-                    <p>
-                        Удобный интерфейс,
-                        специально адаптированный
-                        для смартфонов.
-                    </p>
-
-                </div>
-
-
-                <div class="card">
-
-                    <div class="card-icon">
-                        ⚡
-                    </div>
-
-                    <h3>
-                        Быстрый доступ
-                    </h3>
-
-                    <p>
-                        Все основные разделы
-                        доступны прямо из бокового меню.
-                    </p>
-
-                </div>
-
-
-                <div class="card">
-
-                    <div class="card-icon">
-                        🎨
-                    </div>
-
-                    <h3>
-                        Современный дизайн
-                    </h3>
-
-                    <p>
-                        Тёмная тема, красивые карточки,
-                        эффекты и плавные анимации.
-                    </p>
-
-                </div>
-
-
-                <div class="card">
-
-                    <div class="card-icon">
-                        🔥
-                    </div>
-
-                    <h3>
-                        Анимации
-                    </h3>
-
-                    <p>
-                        Элементы сайта плавно появляются
-                        и реагируют на действия пользователя.
-                    </p>
-
-                </div>
-
-
-                <div class="card">
-
-                    <div class="card-icon">
-                        🌐
-                    </div>
-
-                    <h3>
-                        Онлайн
-                    </h3>
-
-                    <p>
-                        Сайт доступен из любой точки,
-                        где есть подключение к интернету.
-                    </p>
-
-                </div>
-
-
-                <div class="card">
-
-                    <div class="card-icon">
-                        🚀
-                    </div>
-
-                    <h3>
-                        Развитие
-                    </h3>
-
-                    <p>
-                        В будущем можно добавить аккаунты,
-                        новости, чаты и другие функции.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             НОВОСТИ
-        ========================= -->
-
-        <section class="section" id="news">
-
-            <h2 class="section-title">
-                Новости
-            </h2>
-
-            <p class="section-subtitle">
-                Последние события проекта
-            </p>
-
-            <div class="news">
-
-                <div class="news-item">
-
-                    <div class="news-icon">
-                        🚀
-                    </div>
-
-                    <div>
-                        <h3>
-                            Проект запущен
-                        </h3>
-
-                        <p>
-                            Добро пожаловать
-                            на сайт «Джетису-Мобиль».
-                        </p>
-                    </div>
-
-                </div>
-
-
-                <div class="news-item">
-
-                    <div class="news-icon">
-                        📱
-                    </div>
-
-                    <div>
-                        <h3>
-                            Обновлена мобильная версия
-                        </h3>
-
-                        <p>
-                            Интерфейс теперь ещё удобнее
-                            на смартфонах.
-                        </p>
-                    </div>
-
-                </div>
-
-
-                <div class="news-item">
-
-                    <div class="news-icon">
-                        ⭐
-                    </div>
-
-                    <div>
-                        <h3>
-                            Скоро новые функции
-                        </h3>
-
-                        <p>
-                            Следите за обновлениями
-                            проекта.
-                        </p>
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             КОНТАКТЫ
-        ========================= -->
-
-        <section class="section contact" id="contacts">
-
-            <h2 class="section-title">
-                Связаться с нами
-            </h2>
-
-            <p>
-                Здесь можно разместить ссылки
-                на Telegram, Discord, VK или другие
-                социальные сети проекта.
-            </p>
-
-            <div class="hero-buttons"
-                 style="justify-content:center;">
-
-                <a href="#"
-                   class="btn btn-primary">
-                    💬 Telegram
-                </a>
-
-                <a href="#"
-                   class="btn btn-secondary">
-                    🌐 Сообщество
-                </a>
-
-            </div>
-
-        </section>
-
-    </main>
+    <a href="#home" onclick="closeMenu()">🏠 Главная</a>
+    <a href="#about" onclick="closeMenu()">📱 О приложении</a>
+    <a href="#features" onclick="closeMenu()">⭐ Возможности</a>
+    <a href="#download" onclick="closeMenu()">⬇️ Скачать APK</a>
+    <a href="#news" onclick="closeMenu()">📰 Новости</a>
+    <a href="#contacts" onclick="closeMenu()">📞 Контакты</a>
 
 </div>
 
+<div class="overlay" id="overlay" onclick="closeMenu()"></div>
 
-<!-- =========================
-     FOOTER
-========================= -->
+
+<!-- ШАПКА -->
+
+<header>
+
+    <button class="menu-btn" onclick="openMenu()">
+        ☰
+    </button>
+
+    <div class="logo">
+        🚗 Джетису<span>-Мобиль</span>
+    </div>
+
+</header>
+
+
+<main>
+
+<!-- ГЛАВНАЯ -->
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <div class="badge">
+            ✨ Официальный мобильный проект
+        </div>
+
+        <h1>
+            Джетису<br>
+            <span>Мобиль</span>
+        </h1>
+
+        <p>
+            Современный мобильный проект с удобным интерфейсом,
+            красивым дизайном и всеми необходимыми возможностями
+            в одном месте.
+        </p>
+
+        <div class="buttons">
+
+            <a href="#download" class="btn btn-primary pulse">
+                📱 Скачать APK
+            </a>
+
+            <a href="#about" class="btn btn-secondary">
+                Подробнее
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- О ПРИЛОЖЕНИИ -->
+
+<section id="about">
+
+    <h2 class="section-title">
+        📱 О приложении
+    </h2>
+
+    <p class="section-text">
+        «Джетису-Мобиль» создан для удобного использования
+        проекта с мобильного устройства. Сайт адаптирован
+        под смартфоны и планшеты.
+    </p>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="card-icon">📱</div>
+            <h3>Для телефона</h3>
+            <p>
+                Удобная мобильная версия с адаптивным интерфейсом.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">⚡</div>
+            <h3>Быстрая работа</h3>
+            <p>
+                Минимум лишних элементов и быстрый доступ
+                к основным разделам.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">🌙</div>
+            <h3>Тёмная тема</h3>
+            <p>
+                Современный тёмный интерфейс,
+                приятный для использования вечером.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ВОЗМОЖНОСТИ -->
+
+<section id="features">
+
+    <h2 class="section-title">
+        ⭐ Возможности
+    </h2>
+
+    <p class="section-text">
+        Основные возможности «Джетису-Мобиль».
+    </p>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="card-icon">🎨</div>
+            <h3>Красивый дизайн</h3>
+            <p>
+                Современный интерфейс, плавные анимации
+                и аккуратные карточки.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">☰</div>
+            <h3>Боковое меню</h3>
+            <p>
+                Быстрый переход между разделами
+                прямо с телефона.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">🔒</div>
+            <h3>Удобство</h3>
+            <p>
+                Все основные разделы находятся
+                в одном месте.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">🚀</div>
+            <h3>Оптимизация</h3>
+            <p>
+                Страница адаптирована для мобильных
+                устройств.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">✨</div>
+            <h3>Анимации</h3>
+            <p>
+                Плавные эффекты при наведении
+                и открытии элементов.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">📲</div>
+            <h3>APK</h3>
+            <p>
+                Возможность скачать мобильное
+                приложение с сайта.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- СКАЧИВАНИЕ -->
+
+<section id="download">
+
+    <div class="download-box">
+
+        <h2>
+            📲 Скачать «Джетису-Мобиль»
+        </h2>
+
+        <p>
+            Установи мобильное приложение
+            прямо на своё устройство.
+        </p>
+
+        <a
+            class="btn btn-primary"
+            href="Jetisu-Mobile.apk"
+            download
+        >
+            ⬇️ Скачать APK
+        </a>
+
+        <p style="margin-top:20px;font-size:13px;">
+            Версия: 1.0.0
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- НОВОСТИ -->
+
+<section id="news">
+
+    <h2 class="section-title">
+        📰 Новости
+    </h2>
+
+    <p class="section-text">
+        Последние обновления проекта.
+    </p>
+
+    <div class="news">
+
+        <div class="news-item">
+            <div class="news-date">
+                2026
+            </div>
+
+            <h3>
+                🚀 Запуск «Джетису-Мобиль»
+            </h3>
+
+            <p class="section-text" style="margin-top:8px;margin-bottom:0;">
+                Проект запущен и доступен
+                для мобильных устройств.
+            </p>
+        </div>
+
+        <div class="news-item">
+            <div class="news-date">
+                Обновление
+            </div>
+
+            <h3>
+                🎨 Новый дизайн
+            </h3>
+
+            <p class="section-text" style="margin-top:8px;margin-bottom:0;">
+                Добавлены тёмная тема,
+                карточки, анимации и боковое меню.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- КОНТАКТЫ -->
+
+<section id="contacts">
+
+    <h2 class="section-title">
+        📞 Контакты
+    </h2>
+
+    <p class="section-text">
+        По вопросам проекта и предложениям
+        обращайтесь к администрации.
+    </p>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="card-icon">💬</div>
+            <h3>Связь</h3>
+            <p>
+                Следите за обновлениями проекта
+                и новостями.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">🌐</div>
+            <h3>Веб-сайт</h3>
+            <p>
+                Официальная мобильная страница
+                проекта «Джетису-Мобиль».
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<!-- FOOTER -->
 
 <footer>
 
     <p>
-        © 2026
-        <strong>Джетису-Мобиль</strong>
+        © 2026 <strong>Джетису-Мобиль</strong>
     </p>
 
-    <p>
+    <p style="margin-top:8px;">
         Все права защищены.
     </p>
 
 </footer>
 
 
-<!-- =========================
-     JAVASCRIPT
-========================= -->
-
 <script>
 
-const menuButton = document.getElementById("menuButton");
-const sidebar = document.getElementById("sidebar");
-const overlay = document.getElementById("overlay");
+function openMenu() {
+    document.getElementById("sidebar").classList.add("active");
+    document.getElementById("overlay").classList.add("active");
+}
 
-
-// Открытие меню
-
-menuButton.addEventListener("click", function() {
-
-    sidebar.classList.toggle("open");
-    overlay.classList.toggle("show");
-
-});
-
-
-// Закрытие меню по затемнению
-
-overlay.addEventListener("click", function() {
-
-    sidebar.classList.remove("open");
-    overlay.classList.remove("show");
-
-});
-
-
-// Закрытие меню после выбора раздела
-
-document.querySelectorAll(".side-menu a").forEach(function(link) {
-
-    link.addEventListener("click", function() {
-
-        sidebar.classList.remove("open");
-        overlay.classList.remove("show");
-
-    });
-
-});
-
-
-// Подсветка активного раздела
-
-const sections = document.querySelectorAll("section");
-const links = document.querySelectorAll(".side-menu a");
-
-window.addEventListener("scroll", function() {
-
-    let current = "";
-
-    sections.forEach(function(section) {
-
-        const sectionTop = section.offsetTop - 150;
-
-        if (window.scrollY >= sectionTop) {
-            current = section.getAttribute("id");
-        }
-
-    });
-
-    links.forEach(function(link) {
-
-        link.classList.remove("active");
-
-        if (link.getAttribute("href") === "#" + current) {
-            link.classList.add("active");
-        }
-
-    });
-
-});
+function closeMenu() {
+    document.getElementById("sidebar").classList.remove("active");
+    document.getElementById("overlay").classList.remove("active");
+}
 
 </script>
 
