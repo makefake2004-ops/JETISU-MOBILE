@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Джетису-Мобиль</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #0b0f14;
+      color: #ffffff;
+      min-height: 100vh;
+    }
+
+    header {
+      background: #111820;
+      padding: 25px 15px;
+      text-align: center;
+      border-bottom: 1px solid #263443;
+    }
+
+    header h1 {
+      color: #58a6ff;
+      font-size: 30px;
+      margin-bottom: 8px;
+    }
+
+    header p {
+      color: #9da7b3;
+    }
+
+    .container {
+      width: 92%;
+      max-width: 900px;
+      margin: 30px auto;
+    }
+
+    .hero {
+      background: #111820;
+      border: 1px solid #263443;
+      border-radius: 20px;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .hero h2 {
+      font-size: 30px;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      color: #b5bec9;
+      line-height: 1.6;
+      margin-bottom: 25px;
+    }
+
+    .button {
+      display: inline-block;
+      background: #238636;
+      color: white;
+      text-decoration: none;
+      padding: 14px 25px;
+      border-radius: 10px;
+      font-weight: bold;
+    }
+
+    .button:hover {
+      background: #2ea043;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .card {
+      background: #111820;
+      border: 1px solid #263443;
+      border-radius: 15px;
+      padding: 25px;
+    }
+
+    .card h3 {
+      color: #58a6ff;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: #aab4c0;
+      line-height: 1.5;
+    }
+
+    footer {
+      text-align: center;
+      color: #6f7b88;
+      padding: 35px 15px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>Джетису-Мобиль</h1>
+    <p>Официальный сайт проекта</p>
+  </header>
+
+  <main class="container">
+
+    <section class="hero">
+      <h2>Добро пожаловать!</h2>
+
+      <p>
+        Добро пожаловать на официальный сайт
+        проекта «Джетису-Мобиль».
+      </p>
+
+      <a href="#about" class="button">
+        Узнать больше
+      </a>
+    </section>
+
+    <section class="cards" id="about">
+
+      <div class="card">
+        <h3>🚗 Проект</h3>
+        <p>
+          Здесь будет размещена информация
+          о проекте и его возможностях.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>📱 Мобильная версия</h3>
+        <p>
+          Сайт полностью адаптирован
+          для мобильных устройств.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>⭐ Новости</h3>
+        <p>
+          Следите за обновлениями проекта
+          и новыми событиями.
+        </p>
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer>
+    © 2026 Джетису-Мобиль
+  </footer>
+
+</body>
+</html>
